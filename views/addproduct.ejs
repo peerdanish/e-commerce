@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Admin | Add product</title>
+		<link rel="stylesheet" href="/css/style.css" />
+	</head>
+	<body>
+		<%- include('./partials/header.ejs') -%>
+
+		<main>
+			<div class="admin-wrapper">
+				<h1>Welcome Admin</h1>
+				<% let error = locals.alert || ""%>
+				<h3><%= error%></h3>
+				<div class="product-details-form">
+					<form
+						action="/addProductsToDb"
+						method="post"
+						enctype="multipart/form-data"
+					>
+						<div class="inner-form">
+							<div class="labels">
+								<label for="name">Product Name</label>
+								<label for="description">Product Description</label>
+								<label for="price">Product Price</label>
+								<label for="quantity">Product Quantity</label>
+								<label for="image">Product Image</label>
+							</div>
+							<div class="inputs">
+								<input
+									type="text"
+									placeholder="Product Name"
+									id="name"
+									name="name"
+								/>
+								<input
+									type="text"
+									placeholder="Product Description"
+									id="description"
+									name="description"
+								/>
+
+								<input
+									type="number"
+									placeholder="Product Price"
+									id="price"
+									name="price"
+								/>
+								<input
+									type="number"
+									placeholder="Product Quantity"
+									id="quantity"
+									name="quantity"
+								/>
+								<input type="file" id="image" name="image" />
+							</div>
+							<% let imageAlert = locals.imageAlert || ""%>
+							<p class="img-alert"><%= imageAlert%></p>
+						</div>
+
+						<input type="submit" value="Add Product" class="add-product" />
+					</form>
+				</div>
+			</div>
+		</main>
+		<script></script>
+	</body>
+</html>

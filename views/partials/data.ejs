@@ -1,0 +1,31 @@
+<div id="products">
+	<% products.forEach(function(item){ %>
+	<div class="product-outer" id="<%= item._id%>">
+		<div class="product">
+			<img src="<%= item.image%>" alt="product image" class="product-image" />
+			<div class="product-details">
+				<h3 class="product-head"><%= item.name%></h3>
+				<div class="button-desc">
+					<p class="product-description none"><%= item.description%></p>
+					<button id="viewDetails" class="viewDetails" onclick="showDesc(this)">
+						View details
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="cart"> -->
+		<!-- <a href="/addToCart/<%= item._id%>" class="cart addCartBtn">Add to cart</a> -->
+		<div id="main-page-product-bottom">
+			<button
+				id="<%= item._id%>"
+				onclick="addToCart(this)"
+				class="cart addCartBtn"
+			>
+				Add to cart
+			</button>
+			<p>	&#8377 <%= item.price%></p>
+		</div>
+		<!-- </div> -->
+	</div>
+	<%})%>
+</div>

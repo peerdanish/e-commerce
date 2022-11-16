@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My products</title>
+		<link rel="stylesheet" href="/css/style.css" />
+	</head>
+	<body>
+		<%- include('./partials/header.ejs') -%>
+		<div class="whole-wrapper">
+			<div class="admin-products-main">
+				<h1>My products</h1>
+				<div class="admin-products-wrapper">
+					<% products.forEach(function(item){ %>
+					<div class="admin-product">
+						<img src="<%= item.image%>" alt="product" />
+						<div class="bottom-admin-product">
+							<iframe
+								name="dummyframe"
+								id="dummyframe"
+								style="display: none"
+							></iframe>
+							<form
+								action="/adminViewProducts/<%= item._id%>"
+								method="post"
+								target="dummyframe"
+								enctype="multipart/form-data"
+								id="<%= item._id%>"
+							>
+								<div class="inner-form-admin">
+									<div class="labels-admin">
+										<label for="name">Product Name</label>
+										<label for="description">Product Desc</label>
+										<label for="price">Product Price</label>
+										<label for="quantity">Product Quantity</label>
+									</div>
+									<div class="inputs-admin">
+										<input
+											type="text"
+											placeholder="Product Name"
+											id="name"
+											name="name"
+											value="<%=item.name%>"
+										/>
+
+										<input
+											type="text"
+											placeholder="Product Description"
+											id="description"
+											name="description"
+											value="<%=item.description%>"
+										/>
+
+										<input
+											type="number"
+											placeholder="Product Price"
+											id="price"
+											name="price"
+											value="<%=item.price%>"
+										/>
+										<input
+											type="number"
+											placeholder="Product Quantity"
+											id="stock"
+											name="stock"
+											value="<%= item.stock%>"
+										/>
+									</div>
+								</div>
+								<div class="bottom-admin-btns" id="<%=item._id%>">
+									<input
+										type="submit"
+										value="Update"
+										class="update-product"
+										onclick="getProductData(this)"
+									/>
+									<button id="deleteAdminProduct" onclick="deleteProduct(this)">
+										Delete
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<%})%>
+				</div>
+			</div>
+		</main>
+		<script src="/js/script.js"></script>
+	</body>
+</html>

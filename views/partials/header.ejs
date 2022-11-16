@@ -1,0 +1,32 @@
+<div class="logout-outer">
+	<div class="logout-area">
+		<div class="home">
+			<a href="/" ">Home</a>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Admin</button>
+			<div class="dropdown-content admin-section">
+				<a href="/adminAddProducts">Add Product</a>
+				<a href="/adminViewProducts">My Products</a>
+			</div>
+		</div>
+		<div class="logout-inner">
+			<p class="username" id="username">Hello, <%= username%></p>
+			<div id="logout-right">
+
+				<div class="dropdown">
+					<button class="dropbtn">User</button>
+					<div class="dropdown-content admin-section">
+						<a class="logout-button" href="/changePassword" id="changePassBtn"
+						>Change Password</a
+					>
+					<a class="logout-button" href="/logout" id="logoutbtn"><%= message%></a>
+					</div>
+				</div>
+				<a class="logout-button" href="<%= locals.cartMessage ? '/': '/cart'%>" id="cart"><%= locals.cartMessage ? cartMessage : "Go to cart" %></a>
+				
+			</div>
+		</div>
+	</div>
+	
+</div>

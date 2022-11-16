@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>E-commerce | cart</title>
+		<link rel="stylesheet" href="/css/style.css" />
+	</head>
+	<body>
+		<%- include('./partials/header.ejs') -%>
+		<div class="cart-container">
+			<h1>Products in Cart</h1>
+			<div class="cart-products">
+				<% product.forEach(function(item){ %>
+				<div class="cart-product">
+					<img src="<%= item.image%>" alt="product" />
+					<div class="bottom-cart-product">
+						<h1><%=item.name%></h1>
+						<!-- <h4><%=item.price%></h4> -->
+						<div class="quantity-wrapper">
+							<div class="quantity-left">
+								<p class="quantity-p">Quantity:</p>
+								<p class="quantity-number">1</p>
+							</div>
+							<div class="buttons" id="<%= item._id%>">
+								<div class="minus" onclick="cartMinus(this)">-</div>
+								<div class="plus" onclick="cartPlus(this)">+</div>
+							</div>
+						</div>
+					</div>
+					<div class="bottom-buttons" id="<%= item._id%>">
+						<button class="delete-btn" onclick="deleteFromCart(this)">
+							Delete
+						</button>
+						<a
+							href="/desc/<%= item._id%>"
+							class="desc-btn"
+							onclick="viewDesc(this)"
+							>View Desc</a
+						>
+					</div>
+				</div>
+				<%})%>
+			</div>
+		</div>
+		<script src="/js/script.js"></script>
+	</body>
+</html>
